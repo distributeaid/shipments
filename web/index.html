@@ -13,10 +13,19 @@
       href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
     <style>
       html,
-      body {
+      body,
+      #shipmentsApp {
         font-family: "Quicksand", sans-serif;
+        height: 100%;
+        width: 100%;
       }
     </style>
     <link rel="icon" type="image/svg+xml" href="{{SITE_DIR}}/package.svg" />
@@ -30,15 +39,15 @@
       defer
     ></script>
     <script type="text/javascript">
-      const loadJsAsync = (deps) =>
+      const loadJsAsync = deps =>
         loadjs(deps, {
           async: false,
-          returnPromise: true,
+          returnPromise: true
         });
 
       const reactDevLibraries = [
         "https://unpkg.com/react@16/umd/react.development.js",
-        "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+        "https://unpkg.com/react-dom@16/umd/react-dom.development.js"
       ];
 
       const loadApp = async () =>
@@ -46,7 +55,7 @@
           document
             .querySelector("meta[name='isProduction']")
             .getAttribute("content") === "true"
-            ? reactDevLibraries.map((s) =>
+            ? reactDevLibraries.map(s =>
                 s.replace(/development/, "production.min")
               )
             : reactDevLibraries
