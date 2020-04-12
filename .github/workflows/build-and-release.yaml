@@ -45,8 +45,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           cd dist
           git init
-          cp ../web/ ./
-          git add -A
+          cp -v ../web/* ./
+          git add ./*
           git commit -m 'latest release'
           git remote add origin https://github.com/${GITHUB_REPOSITORY}.git
           git push -f origin HEAD:gh-pages
