@@ -4,9 +4,11 @@ const Handlebars = require('handlebars')
 
 const getVersion = () => {
 	let v = 'unknown'
+	const versionFile = path.join(process.cwd(), '.version')
 	try {
-		v = fs.readFileSync(path.join(process.cwd(), '.version')).trim()
+		v = fs.readFileSync(versionFile).trim()
 	} catch {
+		console.error(`Failed to read ${versionFile}.`)
 		v = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
 			.version
 	}
