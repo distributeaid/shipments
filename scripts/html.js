@@ -6,9 +6,12 @@ const getVersion = () => {
 	let v = 'unknown'
 	const versionFile = path.join(process.cwd(), '.version')
 	try {
-		v = fs.readFileSync(versionFile).trim()
-	} catch {
-		console.error(`Failed to read ${versionFile}.`)
+		v = fs
+			.readFileSync(versionFile)
+			.toString()
+			.trim()
+	} catch (err) {
+		console.error(`Failed to read ${versionFile}: ${err.message}.`)
 		v = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
 			.version
 	}
