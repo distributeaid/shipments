@@ -13,3 +13,7 @@ Start the development server
     npm ci
     npm start
 
+## Acknowledgements
+
+- [Package icon](./web/package.svg) licensed under the MIT license from
+  [Feather icons](https://github.com/feathericons/feather)

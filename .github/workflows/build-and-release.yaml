@@ -4,8 +4,7 @@ on: push
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GRAPHQL_API_ENDPOINT: ${{ secrets.GRAPHQL_API_ENDPOINT }}
-  GRAPHQL_API_KEY: ${{ secrets.GRAPHQL_API_KEY }}
+  SITE_DIR: /shipments
 
 jobs:
   main:
@@ -46,9 +45,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           cd dist
           git init
-          git add app.js
-          cp ../web/index.html ./
-          git add index.html
+          cp ../web/ ./
+          git add -A
           git commit -m 'latest release'
           git remote add origin https://github.com/${GITHUB_REPOSITORY}.git
           git push -f origin HEAD:gh-pages

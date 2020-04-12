@@ -21,6 +21,7 @@
         font-family: "Quicksand", sans-serif;
       }
     </style>
+    <link rel="icon" type="image/svg+xml" href="{{SITE_DIR}}/package.svg" />
   </head>
 
   <body>
@@ -52,7 +53,7 @@
               )
             : reactDevLibraries
         )
-          .then(() => loadJsAsync(["./app.js?{{GLOBAL_VERSION}}"]))
+          .then(() => loadJsAsync(["{{SITE_DIR}}/app.js?{{GLOBAL_VERSION}}"]))
           .then(() => {
             App({ target: document.querySelector("#shipmentsApp") });
           });
