@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Distribute Aid: Shipments</title>
+    <meta name="chat:context" content="general" />
+    <meta name="chat:context" content="general" />
+    <meta name="isProduction" content="{{GLOBAL_IS_PRODUCTION}}" />
+    <meta name="version" content="{{GLOBAL_VERSION}}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        font-family: "Quicksand", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="shipmentsApp"></div>
+
+    <script
+      src="https://cdn.rawgit.com/muicss/loadjs/4.2.0/dist/loadjs.min.js"
+      defer
+    ></script>
+    <script type="text/javascript">
+      const loadJsAsync = (deps) =>
+        loadjs(deps, {
+          async: false,
+          returnPromise: true,
+        });
+
+      const reactDevLibraries = [
+        "https://unpkg.com/react@16/umd/react.development.js",
+        "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+      ];
+
+      const loadApp = async () =>
+        loadJsAsync(
+          document
+            .querySelector("meta[name='isProduction']")
+            .getAttribute("content") === "true"
+            ? reactDevLibraries.map((s) =>
+                s.replace(/development/, "production.min")
+              )
+            : reactDevLibraries
+        )
+          .then(() => loadJsAsync(["./app.js?{{GLOBAL_VERSION}}"]))
+          .then(() => {
+            App({ target: document.querySelector("#shipmentsApp") });
+          });
+
+      window.onload = () => {
+        loadApp();
+      };
+    </script>
+  </body>
+</html>
