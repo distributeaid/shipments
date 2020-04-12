@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Distribute Aid: Shipments</title>
-    <meta name="chat:context" content="general" />
-    <meta name="chat:context" content="general" />
-    <meta name="isProduction" content="{{GLOBAL_IS_PRODUCTION}}" />
-    <meta name="version" content="{{GLOBAL_VERSION}}" />
+    <meta name="isProduction" content="{{IS_PRODUCTION}}" />
+    <meta name="version" content="{{VERSION}}" />
     <link
       href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
       rel="stylesheet"
@@ -53,7 +51,7 @@
               )
             : reactDevLibraries
         )
-          .then(() => loadJsAsync(["{{SITE_DIR}}/app.js?{{GLOBAL_VERSION}}"]))
+          .then(() => loadJsAsync(["{{SITE_DIR}}/app.js?{{VERSION}}"]))
           .then(() => {
             App({ target: document.querySelector("#shipmentsApp") });
           });
