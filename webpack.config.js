@@ -59,6 +59,7 @@ module.exports = [
 						html({
 							VERSION,
 							IS_PRODUCTION: JSON.stringify(false),
+							SHIPMENTS_URL: JSON.stringify(process.env.SHIPMENTS_URL),
 						}),
 					)
 				})

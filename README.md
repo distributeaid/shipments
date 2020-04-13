@@ -8,10 +8,19 @@ Public shipment tracker for Distribute Aid shipments.
 
 ## Development
 
+Export these environment variables (use [direnv](https://direnv.net/) to
+simplify the process):
+
+    export SHIPMENTS_URL=https://docs.google.com/spreadsheets/d/1f5H0sOY4tfkQF_QkQemt1GHTYd_wgsvBgmzE4miI9g4/export?format=tsv
+
 Start the development server
 
     npm ci
     npm start
+
+## Architecture decision records (ADRs)
+
+see [./adr](./adr).
 
 ## Acknowledgements
 

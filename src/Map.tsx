@@ -1,10 +1,13 @@
-import React, { createRef } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import { renderToString } from 'react-dom/server'
 import { Map as LeafletMap, TileLayer, Marker, Polyline } from 'react-leaflet'
 import * as L from 'leaflet'
 import styled from 'styled-components'
-import { shipments } from './data/shipments'
+import { Shipment, fetchShipments } from './data/shipments'
 import { colorGenerator } from './components/colors'
+import { pipe } from 'fp-ts/lib/pipeable'
+import * as TE from 'fp-ts/lib/TaskEither'
+import { handleError } from './handleError'
 
 import MapIcon from '../web/marker.svg'
 import ParcelIcon from '../web/parcel.svg'
@@ -26,9 +29,17 @@ const StyledLeafletMap = styled(LeafletMap)`
 
 const colors = colorGenerator()
 
-export const Map = () => {
+export const Map = ({ shipmentsURL }: { shipmentsURL: string }) => {
 	const mapRef = createRef<LeafletMap>()
+	const [shipments, setShipments] = useState<Shipment[]>()
 	const zoom = 3
+
+	useEffect(() => {
+		pipe(fetchShipments(shipmentsURL), TE.map(setShipments))().catch(
+			handleError,
+		)
+	}, [shipmentsURL])
+
 	return (
 		<>
 			<StyledLeafletMap
@@ -41,7 +52,7 @@ export const Map = () => {
 					attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				{shipments.map(({ origin, destination }, k) => {
+				{shipments?.map(({ origin, destination }, k) => {
 					const color = colors.next().value
 					return (
 						<React.Fragment key={k}>

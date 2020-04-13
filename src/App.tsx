@@ -7,8 +7,8 @@ const Header = styled.header`
 	width: 100%;
 `
 
-export const App = () => (
+export const App = ({ shipmentsURL }: { shipmentsURL: string }) => (
 	<Header>
-		<Map />
+		<Map shipmentsURL={shipmentsURL} />
 	</Header>
 )

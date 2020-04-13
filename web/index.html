@@ -5,6 +5,7 @@
     <title>Distribute Aid: Shipments</title>
     <meta name="isProduction" content="{{IS_PRODUCTION}}" />
     <meta name="version" content="{{VERSION}}" />
+    <meta name="shipmentsUrl" content="{{SHIPMENTS_URL}}" />
     <link
       href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
       rel="stylesheet"
@@ -62,7 +63,12 @@
         )
           .then(() => loadJsAsync(["{{SITE_DIR}}/app.js?{{VERSION}}"]))
           .then(() => {
-            App({ target: document.querySelector("#shipmentsApp") });
+            App({
+              target: document.querySelector("#shipmentsApp"),
+              shipmentsUrl: document
+                .querySelector("meta[name='shipmentsUrl']")
+                .getAttribute("content")
+            });
           });
 
       window.onload = () => {

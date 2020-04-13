@@ -45,6 +45,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           cp -v web/* dist
           node scripts/renderIndex.js > dist/index.html
+          node scripts/fetchShipments.js > dist/shipments.json
           cd dist
           git init
           git add ./*
