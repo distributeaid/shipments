@@ -2,31 +2,17 @@ import React, { createRef, useEffect, useState } from 'react'
 import { renderToString } from 'react-dom/server'
 import { Map as LeafletMap, TileLayer, Marker, Polyline } from 'react-leaflet'
 import * as L from 'leaflet'
-import styled from 'styled-components'
 import { Shipment, fetchShipments } from './data/shipments'
 import { cache } from './data/cache'
-import { colorGenerator } from './components/colors'
+import { colorGenerator } from './style/colors'
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
 import { handleError } from './handleError'
-
-import MapIcon from '../web/marker.svg'
-import ParcelIcon from '../web/parcel.svg'
-
-const StyledMapIcon = styled(MapIcon)`
-	width: 20px;
-	height: 30px;
-`
-
-const StyledParcelIcon = styled(ParcelIcon)`
-	width: 30px;
-	height: 30px;
-`
-
-const StyledLeafletMap = styled(LeafletMap)`
-	height: 100%;
-	width: 100%;
-`
+import {
+	LeafletMap as StyledLeafletMap,
+	ParcelIcon,
+	MarkerIcon,
+} from './style/Map'
 
 export const Map = ({
 	shipmentsURL,
@@ -69,7 +55,7 @@ export const Map = ({
 									className: '',
 									iconSize: [30, 30],
 									iconAnchor: [15, 30],
-									html: renderToString(<StyledParcelIcon style={{ color }} />),
+									html: renderToString(<ParcelIcon style={{ color }} />),
 								})}
 								position={origin.position}
 							/>
@@ -78,7 +64,7 @@ export const Map = ({
 									className: '',
 									iconSize: [20, 30],
 									iconAnchor: [10, 30],
-									html: renderToString(<StyledMapIcon style={{ color }} />),
+									html: renderToString(<MarkerIcon style={{ color }} />),
 								})}
 								position={destination.position}
 							/>

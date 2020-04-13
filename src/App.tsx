@@ -1,12 +1,8 @@
 import * as React from 'react'
 import { Map } from './Map'
-import styled from 'styled-components'
 import { Shipment } from './data/shipments'
-
-const Header = styled.header`
-	height: 50%;
-	width: 100%;
-`
+import { Header } from './style/Header'
+import { Main } from './style/Main'
 
 export const App = ({
 	shipmentsURL,
@@ -15,7 +11,10 @@ export const App = ({
 	shipmentsURL: string
 	fallbackShipments: Shipment[]
 }) => (
-	<Header>
-		<Map shipmentsURL={shipmentsURL} fallbackShipments={fallbackShipments} />
-	</Header>
+	<>
+		<Header>
+			<Map shipmentsURL={shipmentsURL} fallbackShipments={fallbackShipments} />
+		</Header>
+		<Main></Main>
+	</>
 )
