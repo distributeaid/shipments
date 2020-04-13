@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Map } from './Map'
+import { Statistics } from './Statistics'
 import { Shipment } from './data/shipments'
 import { Header } from './style/Header'
 import { Main } from './style/Main'
@@ -15,6 +16,11 @@ export const App = ({
 		<Header>
 			<Map shipmentsURL={shipmentsURL} fallbackShipments={fallbackShipments} />
 		</Header>
-		<Main></Main>
+		<Main>
+			<Statistics
+				shipmentsURL={shipmentsURL}
+				fallbackShipments={fallbackShipments}
+			/>
+		</Main>
 	</>
 )
