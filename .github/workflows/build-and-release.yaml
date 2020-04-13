@@ -4,6 +4,7 @@ on: push
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SHIPMENTS_URL: ${{ secrets.SHIPMENTS_URL }}
   SITE_DIR: /shipments
 
 jobs:
