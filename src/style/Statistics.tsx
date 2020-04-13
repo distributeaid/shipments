@@ -7,8 +7,7 @@ const StyledStatisticsContainer = styled.dl`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
-	gap: 1px 1px;
-	grid-template-areas: '. . .' '. . .';
+	gap: 0 0;
 	grid-auto-flow: column;
 `
 
@@ -19,7 +18,7 @@ const DT = styled.dt`
 	grid-row: 2;
 `
 const DD = styled(DT)`
-	padding: 1rem;
+	padding: 2rem 0 0 0;
 	font-weight: bold;
 	font-size: 200%;
 	grid-row: 1;

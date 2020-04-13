@@ -42,15 +42,12 @@ export const Statistics = ({
 
 	return (
 		<StatisticsContainer>
-			<Statistic value={shipments.length} label="Shipments" />
+			<Statistic value={shipments.length} label="shipments" />
 			<Statistic
-				value={numberFormatter.format(totalWeight)}
-				label="Tonnes shipped"
+				value={`${numberFormatter.format(totalWeight)} t`}
+				label="shipped"
 			/>
-			<Statistic
-				value={currencyFormatter.format(totalValue)}
-				label="Worth shipped"
-			/>
+			<Statistic value={currencyFormatter.format(totalValue)} label="shipped" />
 		</StatisticsContainer>
 	)
 }
