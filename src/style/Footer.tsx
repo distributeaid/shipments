@@ -3,8 +3,13 @@ import styled from 'styled-components'
 import { DA_PURPLE, DA_PURPLE_LIGHT } from './colors'
 import { mobileBreakpoint, wideBreakpoint } from './settings'
 
+import GithubIcon from 'feather-icons/dist/icons/github.svg'
+import EmailIcon from 'feather-icons/dist/icons/mail.svg'
+import TwitterIcon from 'feather-icons/dist/icons/twitter.svg'
+import InstagramIcon from 'feather-icons/dist/icons/instagram.svg'
+
 const StyledFooter = styled.footer`
-	padding: 1rem;
+	padding: 1rem 2rem;
 	@media (min-width: ${mobileBreakpoint}) {
 		padding: 4rem;
 	}
@@ -37,6 +42,12 @@ const Copyright = styled(Section)`
 	margin-top: 4rem;
 `
 
+const Nav = styled.nav`
+	a {
+		margin: 0 0.5rem;
+	}
+`
+
 export const Footer = ({ shipmentsURL }: { shipmentsURL: string }) => (
 	<StyledFooter>
 		<Section>
@@ -55,15 +66,51 @@ export const Footer = ({ shipmentsURL }: { shipmentsURL: string }) => (
 			</p>
 		</Section>
 		<Copyright>
-			&copy; 2020{' '}
-			<a
-				href="https://distributeaid.org"
-				rel="noopener noreferrer"
-				target="_blank"
-			>
-				Distribute Aid
-			</a>
-			. All rights reserved.
+			<Nav>
+				<a
+					href={GLOBAL_GITHUB_URL}
+					rel="noopener noreferrer"
+					target="_blank"
+					title={'Contribute to this project on GitHub'}
+				>
+					<GithubIcon />
+				</a>
+				<a
+					href="mailto:hello@distributeaid.org"
+					rel="noopener noreferrer"
+					target="_blank"
+					title={'Contact us via email'}
+				>
+					<EmailIcon />
+				</a>
+				<a
+					href="https://twitter.com/distributeaid"
+					rel="noopener noreferrer"
+					target="_blank"
+					title={'Follow us on Twitter'}
+				>
+					<TwitterIcon />
+				</a>
+				<a
+					href="https://instagram.com/distributeaid"
+					rel="noopener noreferrer"
+					target="_blank"
+					title={'Follow us on Instagram'}
+				>
+					<InstagramIcon />
+				</a>
+			</Nav>
+			<p>
+				&copy; 2020{' '}
+				<a
+					href="https://distributeaid.org"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					Distribute Aid
+				</a>
+				. All rights reserved.
+			</p>
 		</Copyright>
 	</StyledFooter>
 )

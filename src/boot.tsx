@@ -18,7 +18,7 @@ export const boot = ({
 }) => {
 	l('Version:', GLOBAL_VERSION)
 	l('Production:', GLOBAL_IS_PRODUCTION)
-	l('Source code:', 'https://github.com/distributeaid/shipments')
+	l('Source code:', GLOBAL_GITHUB_URL)
 	l('Shipments URL:', shipmentsURL)
 	l('Fallback Shipments', fallbackShipments)
 	ReactDOM.render(

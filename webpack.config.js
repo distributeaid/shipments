@@ -3,6 +3,7 @@ const { html, getVersion } = require('./scripts/html')
 const Handlebars = require('handlebars')
 const fs = require('fs')
 const path = require('path')
+const gitHubUrl = require('./package.json').homepage
 
 const VERSION = getVersion()
 
@@ -45,6 +46,7 @@ module.exports = [
 			new webpack.DefinePlugin({
 				GLOBAL_IS_PRODUCTION: JSON.stringify(true),
 				GLOBAL_VERSION: JSON.stringify(VERSION),
+				GLOBAL_GITHUB_URL: JSON.stringify(gitHubUrl),
 			}),
 		],
 	},
@@ -89,6 +91,7 @@ module.exports = [
 			new webpack.DefinePlugin({
 				GLOBAL_IS_PRODUCTION: JSON.stringify(false),
 				GLOBAL_VERSION: JSON.stringify(VERSION),
+				GLOBAL_GITHUB_URL: JSON.stringify(gitHubUrl),
 			}),
 		],
 	},
