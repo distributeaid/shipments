@@ -15,5 +15,6 @@ Start the development server
 
 ## Acknowledgements
 
-- [Package icon](./web/package.svg) licensed under the MIT license from
-  [Feather icons](https://github.com/feathericons/feather)
+- [Package icon](./web/favicon.svg) based on
+  [Feather icons](https://github.com/feathericons/feather), licensed under the
+  MIT license
