@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import { wideBreakpoint } from './settings'
 
 const StyledStatisticsContainer = styled.dl`
 	padding: 0;
-	margin: 0;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	gap: 0 0;
 	grid-auto-flow: column;
+	max-width: ${wideBreakpoint};
 `
 
 const DT = styled.dt`

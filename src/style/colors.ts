@@ -1,3 +1,6 @@
+export const DA_PURPLE = '#082b76'
+export const DA_PURPLE_LIGHT = '#09328b'
+
 /**
  * A nice list of colors to use for map markers
  */
