@@ -4,6 +4,7 @@ import { Map as LeafletMap, TileLayer, Marker, Polyline } from 'react-leaflet'
 import * as L from 'leaflet'
 import styled from 'styled-components'
 import { Shipment, fetchShipments } from './data/shipments'
+import { cache } from './data/cache'
 import { colorGenerator } from './components/colors'
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
@@ -39,9 +40,10 @@ export const Map = ({
 	const zoom = 3
 
 	useEffect(() => {
-		pipe(fetchShipments(shipmentsURL), TE.map(setShipments))().catch(
-			handleError,
-		)
+		pipe(
+			cache(shipmentsURL, fetchShipments(shipmentsURL)),
+			TE.map(setShipments),
+		)().catch(handleError)
 	}, [shipmentsURL])
 
 	const colors = colorGenerator()
