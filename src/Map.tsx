@@ -27,11 +27,15 @@ const StyledLeafletMap = styled(LeafletMap)`
 	width: 100%;
 `
 
-const colors = colorGenerator()
-
-export const Map = ({ shipmentsURL }: { shipmentsURL: string }) => {
+export const Map = ({
+	shipmentsURL,
+	fallbackShipments,
+}: {
+	shipmentsURL: string
+	fallbackShipments: Shipment[]
+}) => {
 	const mapRef = createRef<LeafletMap>()
-	const [shipments, setShipments] = useState<Shipment[]>()
+	const [shipments, setShipments] = useState<Shipment[]>(fallbackShipments)
 	const zoom = 3
 
 	useEffect(() => {
@@ -39,6 +43,8 @@ export const Map = ({ shipmentsURL }: { shipmentsURL: string }) => {
 			handleError,
 		)
 	}, [shipmentsURL])
+
+	const colors = colorGenerator()
 
 	return (
 		<>

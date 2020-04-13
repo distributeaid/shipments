@@ -9,7 +9,7 @@ const { fetch } = fetchPonyfill()
 pipe(
 	fetchShipments(process.env.SHIPMENTS_URL, fetch),
 	TE.map(shipments => {
-		console.log(JSON.stringify(shipments, null, 2))
+		console.log(JSON.stringify(shipments))
 	}),
 )().then(res => {
 	if (isLeft(res)) {

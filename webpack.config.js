@@ -1,5 +1,8 @@
 const webpack = require('webpack')
 const { html, getVersion } = require('./scripts/html')
+const Handlebars = require('handlebars')
+const fs = require('fs')
+const path = require('path')
 
 const VERSION = getVersion()
 
@@ -59,7 +62,14 @@ module.exports = [
 						html({
 							VERSION,
 							IS_PRODUCTION: JSON.stringify(false),
-							SHIPMENTS_URL: JSON.stringify(process.env.SHIPMENTS_URL),
+							SHIPMENTS_URL: new Handlebars.SafeString(
+								process.env.SHIPMENTS_URL,
+							),
+							FALLBACK_SHIPMENTS: new Handlebars.SafeString(
+								fs.readFileSync(
+									path.join(process.cwd(), 'dist', 'shipments.json'),
+								),
+							),
 						}),
 					)
 				})

@@ -5,7 +5,7 @@
     <title>Distribute Aid: Shipments</title>
     <meta name="isProduction" content="{{IS_PRODUCTION}}" />
     <meta name="version" content="{{VERSION}}" />
-    <meta name="shipmentsUrl" content="{{SHIPMENTS_URL}}" />
+    <meta name="shipmentsURL" content="{{SHIPMENTS_URL}}" />
     <link
       href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
       rel="stylesheet"
@@ -34,7 +34,9 @@
 
   <body>
     <div id="shipmentsApp"></div>
-
+    <script type="text/javascript">
+      const fallbackShipments = {{FALLBACK_SHIPMENTS}};
+    </script>
     <script
       src="https://cdn.rawgit.com/muicss/loadjs/4.2.0/dist/loadjs.min.js"
       defer
@@ -63,10 +65,11 @@
         )
           .then(() => loadJsAsync(["{{SITE_DIR}}/app.js?{{VERSION}}"]))
           .then(() => {
-            App({
+            boot({
               target: document.querySelector("#shipmentsApp"),
-              shipmentsUrl: document
-                .querySelector("meta[name='shipmentsUrl']")
+              fallbackShipments,
+              shipmentsURL: document
+                .querySelector("meta[name='shipmentsURL']")
                 .getAttribute("content")
             });
           });

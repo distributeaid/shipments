@@ -44,8 +44,8 @@ jobs:
           git config --global user.email "actions@example.com"
           git config --global user.name "GitHub Actions"
           cp -v web/* dist
-          node scripts/renderIndex.js > dist/index.html
           node scripts/fetchShipments.js > dist/shipments.json
+          node scripts/renderIndex.js > dist/index.html
           cd dist
           git init
           git add ./*

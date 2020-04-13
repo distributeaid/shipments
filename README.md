@@ -8,14 +8,26 @@ Public shipment tracker for Distribute Aid shipments.
 
 ## Development
 
+### Install dependencies
+
+    npm ci
+
+### Fetch fallback shipment data
+
 Export these environment variables (use [direnv](https://direnv.net/) to
 simplify the process):
 
     export SHIPMENTS_URL=https://docs.google.com/spreadsheets/d/1f5H0sOY4tfkQF_QkQemt1GHTYd_wgsvBgmzE4miI9g4/export?format=tsv
 
-Start the development server
+Fetch the _fallback_ set of shipments from the URL (the app will refetch from
+the URL on boot):
 
-    npm ci
+    mkdir -p dist/
+    npx tsc
+    node scripts/fetchShipments.js > dist/shipments.json
+
+### Start the development server
+
     npm start
 
 ## Architecture decision records (ADRs)

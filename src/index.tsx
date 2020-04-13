@@ -1,2 +1,2 @@
 import { boot } from './boot'
-;(window as any).App = boot
+;(window as any).boot = boot
