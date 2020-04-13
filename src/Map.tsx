@@ -43,7 +43,7 @@ export const Map = ({
 		pipe(
 			cache(shipmentsURL, fetchShipments(shipmentsURL)),
 			TE.map(setShipments),
-		)().catch(handleError)
+		)().catch(handleError('Fetch shipments'))
 	}, [shipmentsURL])
 
 	const colors = colorGenerator()

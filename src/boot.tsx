@@ -5,6 +5,8 @@ import { log } from './log'
 import { App } from './App'
 import { Shipment } from './data/shipments'
 
+const l = (...args: any) => log('App', ...args)
+
 export const boot = ({
 	target,
 	shipmentsURL,
@@ -14,11 +16,11 @@ export const boot = ({
 	shipmentsURL: string
 	fallbackShipments: Shipment[]
 }) => {
-	log('Version:', GLOBAL_VERSION)
-	log('Production:', GLOBAL_IS_PRODUCTION)
-	log('Source code:', 'https://github.com/distributeaid/shipments')
-	log('Shipments URL:', shipmentsURL)
-	log('Fallback Shipments', fallbackShipments)
+	l('Version:', GLOBAL_VERSION)
+	l('Production:', GLOBAL_IS_PRODUCTION)
+	l('Source code:', 'https://github.com/distributeaid/shipments')
+	l('Shipments URL:', shipmentsURL)
+	l('Fallback Shipments', fallbackShipments)
 	ReactDOM.render(
 		<App shipmentsURL={shipmentsURL} fallbackShipments={fallbackShipments} />,
 		target,

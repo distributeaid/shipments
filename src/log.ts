@@ -1,6 +1,6 @@
-export const log = (...args: any) =>
+export const log = (label: string, ...args: any) =>
 	console.log(
-		'%cApp',
+		`%c${label}`,
 		'background-color: #3543ec; color: #ffffff; padding: 0.25rem;',
 		...args,
 	)
