@@ -34,7 +34,9 @@ jobs:
           node .github/workflows/get-next-version.js > .version
           cat .version
       - name: Build
-        run: npm run build
+        run: |
+          npx tsc
+          npm run build
       - name: Lint
         run: npm run lint
       - name: Publish latest release to GitHub pages
