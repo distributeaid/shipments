@@ -19,9 +19,11 @@ const DT = styled.dt`
 	text-align: center;
 	grid-row: 2;
 `
-const DD = styled(DT)`
+const DD = styled.dd`
 	padding: 2rem 0 0 0;
+	margin: 0;
 	font-weight: bold;
+	text-align: center;
 	font-size: 200%;
 	grid-row: 1;
 `
