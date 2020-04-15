@@ -53,18 +53,18 @@ export const Map = ({
 							<Marker
 								icon={L.divIcon({
 									className: '',
-									iconSize: [30, 30],
-									iconAnchor: [15, 30],
-									html: renderToString(<ParcelIcon style={{ color }} />),
+									iconSize: [20, 30],
+									iconAnchor: [10, 30],
+									html: renderToString(<MarkerIcon style={{ color }} />),
 								})}
 								position={origin.position}
 							/>
 							<Marker
 								icon={L.divIcon({
 									className: '',
-									iconSize: [20, 30],
-									iconAnchor: [10, 30],
-									html: renderToString(<MarkerIcon style={{ color }} />),
+									iconSize: [30, 30],
+									iconAnchor: [15, 30],
+									html: renderToString(<ParcelIcon style={{ color }} />),
 								})}
 								position={destination.position}
 							/>
