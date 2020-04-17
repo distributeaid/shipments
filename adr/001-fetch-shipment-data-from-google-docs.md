@@ -1,4 +1,4 @@
-# Fetch shipment data from Google Docs
+# 1. Fetch shipment data from Google Docs
 
 - We cannot use data from our shipment providers and internal documents for
   security reasons we need to maintain a data source with public information
