@@ -12,12 +12,17 @@ Public shipment tracker for Distribute Aid shipments.
 
     npm ci
 
+### Configure the environment
+
+Make this environment variable available:
+
+> ℹ️ Linux users can use [direnv](https://direnv.net/) to simplify the process.
+> Windows users could look into setting up their development environment using
+> [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index).
+
+    SHIPMENTS_URL=https://docs.google.com/spreadsheets/d/1f5H0sOY4tfkQF_QkQemt1GHTYd_wgsvBgmzE4miI9g4/export?format=tsv
+
 ### Fetch fallback shipment data
-
-Export these environment variables (use [direnv](https://direnv.net/) to
-simplify the process):
-
-    export SHIPMENTS_URL=https://docs.google.com/spreadsheets/d/1f5H0sOY4tfkQF_QkQemt1GHTYd_wgsvBgmzE4miI9g4/export?format=tsv
 
 Fetch the _fallback_ set of shipments from the URL (the app will refetch from
 the URL on boot):
