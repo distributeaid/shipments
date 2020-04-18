@@ -8,6 +8,11 @@ Public shipment tracker for Distribute Aid shipments.
 
 ## Development
 
+> ℹ️ These instructions apply to Unix-based development environments; Linux and
+> Mac users should be fine. Windows users could look into setting up their
+> development environment using
+> [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index).
+
 ### Install dependencies
 
     npm ci
@@ -17,10 +22,8 @@ Public shipment tracker for Distribute Aid shipments.
 Make this environment variable available:
 
 > ℹ️ Linux users can use [direnv](https://direnv.net/) to simplify the process.
-> Windows users could look into setting up their development environment using
-> [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index).
 
-    SHIPMENTS_URL=https://docs.google.com/spreadsheets/d/1f5H0sOY4tfkQF_QkQemt1GHTYd_wgsvBgmzE4miI9g4/export?format=tsv
+    export SHIPMENTS_URL=https://docs.google.com/spreadsheets/d/1f5H0sOY4tfkQF_QkQemt1GHTYd_wgsvBgmzE4miI9g4/export?format=tsv
 
 ### Fetch fallback shipment data
 
