@@ -8,3 +8,5 @@
     node scripts/fetchShipments.js > dist/shipments.json;
     node scripts/renderIndex.js > dist/index.html;
     '''
+[build.environment]
+  NODE_VERSION = 12
