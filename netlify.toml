@@ -2,8 +2,7 @@
     publish = "dist"
     command = '''
     echo $HEAD > .version;
-    npm ci --no-audit;
-    npx tsc;
+    ./node_modules/.bin/tsc;
     npm run build;
     cp -v web/* dist;
     node scripts/fetchShipments.js > dist/shipments.json;
