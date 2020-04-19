@@ -1,7 +1,7 @@
 [build]
     publish = "dist"
     command = '''
-    echo $HEAD > .version;
+    echo $COMMIT_REF > .version;
     ./node_modules/.bin/tsc;
     npm run build;
     cp -v web/* dist;
