@@ -22,7 +22,9 @@ export const boot = ({
 	l('Shipments URL:', shipmentsURL)
 	l('Fallback Shipments', fallbackShipments)
 	ReactDOM.render(
-		<App shipmentsURL={shipmentsURL} fallbackShipments={fallbackShipments} />,
+		<React.StrictMode>
+			<App shipmentsURL={shipmentsURL} fallbackShipments={fallbackShipments} />
+		</React.StrictMode>,
 		target,
 	)
 }
