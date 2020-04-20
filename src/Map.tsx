@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from 'react'
 import { renderToString } from 'react-dom/server'
-import { Map as LeafletMap, TileLayer, Marker, Polyline } from 'react-leaflet'
+import { Map as LeafletMap, TileLayer, Marker, Polyline, Popup } from 'react-leaflet'
 import * as L from 'leaflet'
 import { Shipment, fetchShipments } from './data/shipments'
 import { cache } from './data/cache'
@@ -46,8 +46,10 @@ export const Map = ({
 					attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				{shipments?.map(({ origin, destination }, k) => {
+				{shipments?.map(({ origin, destination, name, weight, value }, k) => {
 					const color = colors.next().value
+					const cost = new Intl.NumberFormat('en-UK', { style: 'currency', currency: 'EUR' }).format(value).replace(/\D00$/, '') as string
+					const shipmentWeight = new Intl.NumberFormat('en-UK', { maximumSignificantDigits: 3 }).format(weight) + ' kg'
 					return (
 						<React.Fragment key={k}>
 							<Marker
@@ -57,8 +59,9 @@ export const Map = ({
 									iconAnchor: [10, 30],
 									html: renderToString(<MarkerIcon style={{ color }} />),
 								})}
-								position={origin.position}
-							/>
+								position={origin.position}>
+								<Popup>{name}<br/>Weight: {shipmentWeight}<br/>Value: {cost}</Popup>
+							</Marker>
 							<Marker
 								icon={L.divIcon({
 									className: '',
@@ -66,14 +69,16 @@ export const Map = ({
 									iconAnchor: [15, 30],
 									html: renderToString(<ParcelIcon style={{ color }} />),
 								})}
-								position={destination.position}
-							/>
+								position={destination.position}>
+								<Popup>{name}<br/>Weight: {shipmentWeight}<br/>Value: {cost}</Popup>
+							</Marker>
 							<Polyline
 								positions={[origin.position, destination.position]}
 								weight={zoom > 16 ? 1 : 2}
 								linecap={'round'}
-								color={color}
-							/>
+								color={color}>
+								<Popup>{name}<br/>Weight: {shipmentWeight}<br/>Value: {cost}</Popup>
+							</Polyline>
 						</React.Fragment>
 					)
 				})}
