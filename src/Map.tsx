@@ -1,6 +1,12 @@
 import React, { createRef, useEffect, useState } from 'react'
 import { renderToString } from 'react-dom/server'
-import { Map as LeafletMap, TileLayer, Marker, Polyline, Popup } from 'react-leaflet'
+import {
+	Map as LeafletMap,
+	TileLayer,
+	Marker,
+	Polyline,
+	Popup,
+} from 'react-leaflet'
 import * as L from 'leaflet'
 import { Shipment, fetchShipments } from './data/shipments'
 import { cache } from './data/cache'
@@ -13,6 +19,17 @@ import {
 	ParcelIcon,
 	MarkerIcon,
 } from './style/Map'
+
+const currencyFormatter = new Intl.NumberFormat(navigator.language, {
+	style: 'currency',
+	currency: 'EUR',
+	minimumFractionDigits: 0,
+	maximumFractionDigits: 0,
+})
+const numberFormatter = new Intl.NumberFormat(navigator.language, {
+	minimumFractionDigits: 0,
+	maximumFractionDigits: 0,
+})
 
 export const Map = ({
 	shipmentsURL,
@@ -48,8 +65,6 @@ export const Map = ({
 				/>
 				{shipments?.map(({ origin, destination, name, weight, value }, k) => {
 					const color = colors.next().value
-					const cost = new Intl.NumberFormat('en-UK', { style: 'currency', currency: 'EUR' }).format(value).replace(/\D00$/, '') as string
-					const shipmentWeight = new Intl.NumberFormat('en-UK', { maximumSignificantDigits: 3 }).format(weight) + ' kg'
 					return (
 						<React.Fragment key={k}>
 							<Marker
@@ -59,8 +74,15 @@ export const Map = ({
 									iconAnchor: [10, 30],
 									html: renderToString(<MarkerIcon style={{ color }} />),
 								})}
-								position={origin.position}>
-								<Popup>{name}<br/>Weight: {shipmentWeight}<br/>Value: {cost}</Popup>
+								position={origin.position}
+							>
+								<Popup offset={[0, -15]}>
+									{name}
+									<br />
+									Weight: {numberFormatter.format(weight)} kg
+									<br />
+									Value: {currencyFormatter.format(value)}
+								</Popup>
 							</Marker>
 							<Marker
 								icon={L.divIcon({
@@ -69,15 +91,29 @@ export const Map = ({
 									iconAnchor: [15, 30],
 									html: renderToString(<ParcelIcon style={{ color }} />),
 								})}
-								position={destination.position}>
-								<Popup>{name}<br/>Weight: {shipmentWeight}<br/>Value: {cost}</Popup>
+								position={destination.position}
+							>
+								<Popup offset={[0, -15]}>
+									{name}
+									<br />
+									Weight: {numberFormatter.format(weight)} kg
+									<br />
+									Value: {currencyFormatter.format(value)}
+								</Popup>
 							</Marker>
 							<Polyline
 								positions={[origin.position, destination.position]}
 								weight={zoom > 16 ? 1 : 2}
 								linecap={'round'}
-								color={color}>
-								<Popup>{name}<br/>Weight: {shipmentWeight}<br/>Value: {cost}</Popup>
+								color={color}
+							>
+								<Popup>
+									{name}
+									<br />
+									Weight: {numberFormatter.format(weight)} kg
+									<br />
+									Value: {currencyFormatter.format(value)}
+								</Popup>
 							</Polyline>
 						</React.Fragment>
 					)
