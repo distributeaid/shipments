@@ -1,6 +1,12 @@
 import React, { createRef, useEffect, useState } from 'react'
 import { renderToString } from 'react-dom/server'
-import { Map as LeafletMap, TileLayer, Marker, Polyline, Popup } from 'react-leaflet'
+import {
+	Map as LeafletMap,
+	TileLayer,
+	Marker,
+	Polyline,
+	Popup,
+} from 'react-leaflet'
 import * as L from 'leaflet'
 import { Shipment, fetchShipments } from './data/shipments'
 import { cache } from './data/cache'
@@ -14,7 +20,6 @@ import {
 	ParcelIcon,
 	MarkerIcon,
 } from './style/Map'
-
 
 export const Map = ({
 	shipmentsURL,
@@ -58,13 +63,16 @@ export const Map = ({
 									iconSize: [20, 30],
 									iconAnchor: [10, 30],
 									html: renderToString(<MarkerIcon style={{ color }} />),
-									popupAnchor: [0,-20],
+									popupAnchor: [0, -20],
 								})}
 								position={origin.position}
-							pop>
+								pop
+							>
 								<Popup>
-									{name}<br/>
-									Weight: {formatWeight(weight)}<br/>
+									{name}
+									<br />
+									Weight: {formatWeight(weight)}
+									<br />
 									Value: {formatCurrency(value)}
 								</Popup>
 							</Marker>
@@ -74,12 +82,15 @@ export const Map = ({
 									iconSize: [30, 30],
 									iconAnchor: [15, 30],
 									html: renderToString(<ParcelIcon style={{ color }} />),
-									popupAnchor: [0,-20],
+									popupAnchor: [0, -20],
 								})}
-								position={destination.position}>
+								position={destination.position}
+							>
 								<Popup>
-									{name}<br/>
-									Weight: {formatWeight(weight)}<br/>
+									{name}
+									<br />
+									Weight: {formatWeight(weight)}
+									<br />
 									Value: {formatCurrency(value)}
 								</Popup>
 							</Marker>
@@ -87,10 +98,13 @@ export const Map = ({
 								positions={[origin.position, destination.position]}
 								weight={zoom > 16 ? 1 : 2}
 								linecap={'round'}
-								color={color}>
+								color={color}
+							>
 								<Popup>
-									{name}<br/>
-									Weight: {formatWeight(weight)}<br/>
+									{name}
+									<br />
+									Weight: {formatWeight(weight)}
+									<br />
 									Value: {formatCurrency(value)}
 								</Popup>
 							</Polyline>

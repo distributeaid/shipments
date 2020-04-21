@@ -23,20 +23,14 @@ export const Statistics = ({
 		)().catch(handleError('Fetch shipments'))
 	}, [shipmentsURL])
 
-	const totalWeight = shipments.reduce(
-		(total, { weight }) => total + weight,
-		0,
-	)
+	const totalWeight = shipments.reduce((total, { weight }) => total + weight, 0)
 
 	const totalValue = shipments.reduce((total, { value }) => total + value, 0)
 
 	return (
 		<StatisticsContainer>
 			<Statistic value={shipments.length} label="shipments" />
-			<Statistic
-				value={formatWeight(totalWeight)}
-				label="shipped"
-			/>
+			<Statistic value={formatWeight(totalWeight)} label="shipped" />
 			<Statistic value={formatCurrency(totalValue)} label="shipped" />
 		</StatisticsContainer>
 	)
