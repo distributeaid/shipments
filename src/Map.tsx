@@ -67,9 +67,11 @@ export const Map = ({
 									iconSize: [20, 30],
 									iconAnchor: [10, 30],
 									html: renderToString(<MarkerIcon style={{ color }} />),
+									popupAnchor: [0,-20],
 								})}
-								position={origin.position}>
-								<Popup offset={[0, -15]}>
+								position={origin.position}
+							pop>
+								<Popup>
 									{name}<br/>
 									Weight: {numberFormatter.format(weight)} kg<br/>
 									Value: {currencyFormatter.format(value)}
@@ -81,9 +83,10 @@ export const Map = ({
 									iconSize: [30, 30],
 									iconAnchor: [15, 30],
 									html: renderToString(<ParcelIcon style={{ color }} />),
+									popupAnchor: [0,-20],
 								})}
 								position={destination.position}>
-								<Popup offset={[0, -15]}>
+								<Popup>
 									{name}<br/>
 									Weight: {numberFormatter.format(weight)} kg<br/>
 									Value: {currencyFormatter.format(value)}
