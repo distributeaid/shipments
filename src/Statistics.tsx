@@ -4,18 +4,8 @@ import { cache } from './data/cache'
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
 import { handleError } from './handleError'
+import { formatCurrency, formatWeight } from './formatter'
 import { StatisticsContainer, Statistic } from './style/Statistics'
-
-const numberFormatter = new Intl.NumberFormat(navigator.language, {
-	minimumFractionDigits: 0,
-	maximumFractionDigits: 0,
-})
-const currencyFormatter = new Intl.NumberFormat(navigator.language, {
-	style: 'currency',
-	currency: 'EUR',
-	minimumFractionDigits: 0,
-	maximumFractionDigits: 0,
-})
 
 export const Statistics = ({
 	shipmentsURL,
@@ -34,7 +24,7 @@ export const Statistics = ({
 	}, [shipmentsURL])
 
 	const totalWeight = shipments.reduce(
-		(total, { weight }) => total + Math.round(weight / 1000),
+		(total, { weight }) => total + weight,
 		0,
 	)
 
@@ -44,10 +34,10 @@ export const Statistics = ({
 		<StatisticsContainer>
 			<Statistic value={shipments.length} label="shipments" />
 			<Statistic
-				value={`${numberFormatter.format(totalWeight)} t`}
+				value={formatWeight(totalWeight)}
 				label="shipped"
 			/>
-			<Statistic value={currencyFormatter.format(totalValue)} label="shipped" />
+			<Statistic value={formatCurrency(totalValue)} label="shipped" />
 		</StatisticsContainer>
 	)
 }

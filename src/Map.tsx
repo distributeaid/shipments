@@ -8,22 +8,13 @@ import { colorGenerator } from './style/colors'
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
 import { handleError } from './handleError'
+import { formatCurrency, formatWeight } from './formatter'
 import {
 	LeafletMap as StyledLeafletMap,
 	ParcelIcon,
 	MarkerIcon,
 } from './style/Map'
 
-const currencyFormatter = new Intl.NumberFormat(navigator.language, {
-	style: 'currency',
-	currency: 'EUR',
-	minimumFractionDigits: 0,
-	maximumFractionDigits: 0,
-})
-const numberFormatter = new Intl.NumberFormat(navigator.language, {
-	minimumFractionDigits: 0,
-	maximumFractionDigits: 0,
-})
 
 export const Map = ({
 	shipmentsURL,
@@ -73,8 +64,8 @@ export const Map = ({
 							pop>
 								<Popup>
 									{name}<br/>
-									Weight: {numberFormatter.format(weight)} kg<br/>
-									Value: {currencyFormatter.format(value)}
+									Weight: {formatWeight(weight)}<br/>
+									Value: {formatCurrency(value)}
 								</Popup>
 							</Marker>
 							<Marker
@@ -88,8 +79,8 @@ export const Map = ({
 								position={destination.position}>
 								<Popup>
 									{name}<br/>
-									Weight: {numberFormatter.format(weight)} kg<br/>
-									Value: {currencyFormatter.format(value)}
+									Weight: {formatWeight(weight)}<br/>
+									Value: {formatCurrency(value)}
 								</Popup>
 							</Marker>
 							<Polyline
@@ -99,8 +90,8 @@ export const Map = ({
 								color={color}>
 								<Popup>
 									{name}<br/>
-									Weight: {numberFormatter.format(weight)} kg<br/>
-									Value: {currencyFormatter.format(value)}
+									Weight: {formatWeight(weight)}<br/>
+									Value: {formatCurrency(value)}
 								</Popup>
 							</Polyline>
 						</React.Fragment>
