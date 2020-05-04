@@ -21,7 +21,8 @@
     "start": "webpack-dev-server --config-name development --open",
     "lint": "eslint --ext .js,.ts,.tsx src/**",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "postinstall": "check-node-version --package"
   },
   "devDependencies": {
     "@bifravst/code-style": "^7.1.2",
@@ -33,6 +34,7 @@
     "@types/react-dom": "^16.9.6",
     "@types/react-leaflet": "^2.5.1",
     "@types/styled-components": "^5.1.0",
+    "check-node-version": "^4.0.3",
     "eslint-plugin-react": "^7.19.0",
     "fetch-ponyfill": "^6.1.0",
     "handlebars": "^4.7.6",
@@ -84,7 +86,7 @@
     ]
   },
   "engines": {
-    "node": ">=12.0.0",
+    "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
   "snyk": true
