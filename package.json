@@ -42,7 +42,6 @@
     "localforage": "^1.7.3",
     "semantic-release": "^17.0.6",
     "source-map-loader": "^0.2.4",
-    "stream-buffers": "^3.0.2",
     "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
