@@ -13,6 +13,9 @@ const cfg = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 	},
+	resolve: {
+		extensions: ['.ts', '.tsx', '.mjs', '.js'],
+	},
 	module: {
 		rules: [
 			{
