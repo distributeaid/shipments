@@ -78,15 +78,15 @@
       defer
     ></script>
     <script type="text/javascript">
-      const loadJsAsync = deps =>
+      const loadJsAsync = (deps) =>
         loadjs(deps, {
           async: false,
-          returnPromise: true
+          returnPromise: true,
         });
 
       const reactDevLibraries = [
         "https://unpkg.com/react@16/umd/react.development.js",
-        "https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+        "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
       ];
 
       const loadApp = async () =>
@@ -94,19 +94,19 @@
           document
             .querySelector("meta[name='isProduction']")
             .getAttribute("content") === "true"
-            ? reactDevLibraries.map(s =>
+            ? reactDevLibraries.map((s) =>
                 s.replace(/development/, "production.min")
               )
             : reactDevLibraries
         )
-          .then(() => loadJsAsync(["{{SITE_DIR}}/app.js?{{VERSION}}"]))
+          .then(() => loadJsAsync(["{{SITE_DIR}}/bundle.js?{{VERSION}}"]))
           .then(() => {
             boot({
               target: document.querySelector("#shipmentsApp"),
               fallbackShipments,
               shipmentsURL: document
                 .querySelector("meta[name='shipmentsURL']")
-                .getAttribute("content")
+                .getAttribute("content"),
             });
           });
 

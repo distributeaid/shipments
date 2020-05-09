@@ -8,11 +8,10 @@ const gitHubUrl = require('./package.json').homepage
 const VERSION = getVersion()
 
 const cfg = {
-	entry: {
-		app: './src/index.tsx',
-	},
-	resolve: {
-		extensions: ['.ts', '.tsx', '.js'],
+	entry: './src/index.tsx',
+	output: {
+		filename: 'bundle.js',
+		path: path.resolve(__dirname, 'dist'),
 	},
 	module: {
 		rules: [

@@ -3,9 +3,12 @@
   "include": ["src/*.tsx", "src/*.ts"],
   "compilerOptions": {
     "outDir": "dist/",
+    "esModuleInterop": true,
+    "module": "es6",
+    "target": "es5",
+    "lib": ["es6", "dom"],
     "jsx": "react",
-    "lib": ["DOM"],
-    "target": "es2015",
-    "esModuleInterop": true
+    "moduleResolution": "node",
+    "allowJs": true
   }
 }

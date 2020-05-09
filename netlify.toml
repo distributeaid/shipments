@@ -9,4 +9,4 @@
     node scripts/renderIndex.js > dist/index.html;
     '''
 [build.environment]
-  NODE_VERSION = "13"
+  NODE_VERSION = "14"
