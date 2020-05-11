@@ -57,7 +57,11 @@ export const Footer = ({ shipmentsURL }: { shipmentsURL: string }) => (
 				not disclose information that can be used to harm our partners, aid
 				workers on the ground or in any way jeopardize the safety of our
 				operation and shipments. Therefore we maintain{' '}
-				<a href={shipmentsURL} rel="noopener noreferrer" target="_blank">
+				<a
+					href={shipmentsURL.replace(/export\?format=[a-z]+$/, '')}
+					rel="noopener noreferrer"
+					target="_blank"
+				>
 					a separate data source
 				</a>{' '}
 				that contains information which we consider safe to be shared. This data
