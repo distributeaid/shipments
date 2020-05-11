@@ -53,64 +53,55 @@ export const Map = ({
 					attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				{shipments?.map(({ origin, destination, name, weight, value }, k) => {
-					const color = colors.next().value
-					return (
-						<React.Fragment key={k}>
-							<Marker
-								icon={L.divIcon({
-									className: '',
-									iconSize: [20, 30],
-									iconAnchor: [10, 30],
-									html: renderToString(<MarkerIcon style={{ color }} />),
-									popupAnchor: [0, -20],
-								})}
-								position={origin.position}
-								pop
-							>
-								<Popup>
-									{name}
-									<br />
-									Weight: {formatWeight(weight)}
-									<br />
-									Value: {formatCurrency(value)}
-								</Popup>
-							</Marker>
-							<Marker
-								icon={L.divIcon({
-									className: '',
-									iconSize: [30, 30],
-									iconAnchor: [15, 30],
-									html: renderToString(<ParcelIcon style={{ color }} />),
-									popupAnchor: [0, -20],
-								})}
-								position={destination.position}
-							>
-								<Popup>
-									{name}
-									<br />
-									Weight: {formatWeight(weight)}
-									<br />
-									Value: {formatCurrency(value)}
-								</Popup>
-							</Marker>
-							<Polyline
-								positions={[origin.position, destination.position]}
-								weight={zoom > 16 ? 1 : 2}
-								linecap={'round'}
-								color={color}
-							>
-								<Popup>
-									{name}
-									<br />
-									Weight: {formatWeight(weight)}
-									<br />
-									Value: {formatCurrency(value)}
-								</Popup>
-							</Polyline>
-						</React.Fragment>
-					)
-				})}
+				{shipments?.map(
+					({ origin, destination, contents, weight, value }, k) => {
+						const color = colors.next().value
+						const InfoPopup = (
+							<Popup>
+								<strong>{contents}</strong>
+								<br />
+								{formatWeight(weight)} / {formatCurrency(value)}
+							</Popup>
+						)
+						return (
+							<React.Fragment key={k}>
+								<Marker
+									icon={L.divIcon({
+										className: '',
+										iconSize: [20, 30],
+										iconAnchor: [10, 30],
+										html: renderToString(<MarkerIcon style={{ color }} />),
+										popupAnchor: [0, -20],
+									})}
+									position={origin.position}
+									pop
+								>
+									{InfoPopup}
+								</Marker>
+								<Marker
+									icon={L.divIcon({
+										className: '',
+										iconSize: [30, 30],
+										iconAnchor: [15, 30],
+										html: renderToString(<ParcelIcon style={{ color }} />),
+										popupAnchor: [0, -20],
+									})}
+									position={destination.position}
+								>
+									{InfoPopup}
+								</Marker>
+								<Polyline
+									positions={[origin.position, destination.position]}
+									weight={zoom > 16 ? 1 : 2}
+									linecap={'round'}
+									color={color}
+								>
+									{InfoPopup}
+								</Polyline>
+							</React.Fragment>
+						)
+					},
+				)}
 			</StyledLeafletMap>
 		</>
 	)
