@@ -18,7 +18,10 @@ export const Statistics = ({
 
 	useEffect(() => {
 		pipe(
-			cache(shipmentsURL, fetchShipments(shipmentsURL)),
+			cache(
+				shipmentsURL,
+				fetchShipments(`https://cors-anywhere.herokuapp.com/${shipmentsURL}`), // https://cors-anywhere.herokuapp.com/ will add CORS headers. Should only be used for PUBLIC URLs.
+			),
 			TE.map(setShipments),
 		)().catch(handleError('Fetch shipments'))
 	}, [shipmentsURL])
