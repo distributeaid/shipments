@@ -70,7 +70,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0",
-    "snyk": "^1.339.3",
+    "snyk": "^1.341.1",
     "styled-components": "^5.1.1"
   },
   "release": {
