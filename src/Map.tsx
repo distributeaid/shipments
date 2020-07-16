@@ -15,11 +15,7 @@ import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
 import { handleError } from './handleError'
 import { formatCurrency, formatWeight } from './formatter'
-import {
-	LeafletMap as StyledLeafletMap,
-	ParcelIcon,
-	MarkerIcon,
-} from './style/Map'
+import { LeafletMapStyle, ParcelIcon, MarkerIcon } from './style/Map'
 
 export const Map = ({
 	shipmentsURL,
@@ -46,7 +42,8 @@ export const Map = ({
 
 	return (
 		<>
-			<StyledLeafletMap
+			<LeafletMapStyle />
+			<LeafletMap
 				center={[48, 10]}
 				zoom={zoom}
 				ref={mapRef}
@@ -105,7 +102,7 @@ export const Map = ({
 						)
 					},
 				)}
-			</StyledLeafletMap>
+			</LeafletMap>
 		</>
 	)
 }
