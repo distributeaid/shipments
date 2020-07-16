@@ -22,13 +22,15 @@
     "lint": "eslint --ext .js,.ts,.tsx src/**",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect",
-    "postinstall": "check-node-version --package"
+    "postinstall": "check-node-version --package",
+    "test": "jest"
   },
   "devDependencies": {
     "@bifravst/code-style": "^8.0.13",
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-angular": "^9.1.1",
     "@svgr/webpack": "^5.4.0",
+    "@types/jest": "^26.0.4",
     "@types/leaflet": "^1.5.16",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
@@ -39,9 +41,11 @@
     "fetch-ponyfill": "^6.1.1",
     "handlebars": "^4.7.6",
     "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "localforage": "^1.7.4",
     "semantic-release": "^17.1.1",
     "source-map-loader": "^1.0.1",
+    "ts-jest": "^26.1.2",
     "ts-loader": "^8.0.1",
     "typescript": "^3.9.6",
     "webpack": "^4.43.0",
@@ -51,7 +55,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e",
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm test && lint-staged"
     }
   },
   "lint-staged": {
@@ -88,5 +92,27 @@
     "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
-  "snyk": true
+  "snyk": true,
+  "jest": {
+    "testURL": "http://localhost",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": ".+\\.spec\\.ts$",
+    "coverageReporters": [
+      "html",
+      "lcov"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": true
+      }
+    }
+  }
 }
