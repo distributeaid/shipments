@@ -31,7 +31,6 @@ export type Shipment = {
 		}
 	}
 	weight: number
-	value: number
 }
 
 type ShipmentSpreadsheetData = {
@@ -53,7 +52,7 @@ export const fetchShipments = (
 ) =>
 	TE.tryCatch<ErrorInfo, Shipment[]>(
 		async () =>
-			(fetchImplementation || fetch)(url)
+			(fetchImplementation ?? fetch)(url)
 				.then(async (res) => res.text())
 				.then((res) => {
 					const table = res.split('\n')

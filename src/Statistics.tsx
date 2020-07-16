@@ -4,7 +4,7 @@ import { cache } from './data/cache'
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
 import { handleError } from './handleError'
-import { formatCurrency, formatWeight } from './formatter'
+import { formatWeight } from './formatter'
 import { StatisticsContainer, Statistic } from './style/Statistics'
 
 export const Statistics = ({
@@ -28,13 +28,10 @@ export const Statistics = ({
 
 	const totalWeight = shipments.reduce((total, { weight }) => total + weight, 0)
 
-	const totalValue = shipments.reduce((total, { value }) => total + value, 0)
-
 	return (
 		<StatisticsContainer>
 			<Statistic value={shipments.length} label="shipments" />
 			<Statistic value={formatWeight(totalWeight)} label="shipped" />
-			<Statistic value={formatCurrency(totalValue)} label="shipped" />
 		</StatisticsContainer>
 	)
 }
