@@ -43,7 +43,6 @@ type ShipmentSpreadsheetData = {
 	destinationLat: string
 	destinationLng: string
 	weight: string
-	value: string
 }
 
 export const fetchShipments = (
@@ -87,7 +86,6 @@ export const fetchShipments = (
 								},
 							},
 							weight: parseInt(s.weight, 10),
-							value: parseInt(s.value, 10),
 						}))
 				}),
 		(error) => ({

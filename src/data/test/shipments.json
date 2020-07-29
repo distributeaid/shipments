@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Soap Shipment 2.0",
+    "shipper": "Distribute Aid",
+    "contents": "182,000 bars of soap",
+    "date": "2020-03-23T00:00:00.000Z",
+    "origin": { "position": { "lat": 55.8554403, "lng": -4.3024975 } },
+    "destination": { "position": { "lat": 37.990832, "lng": 23.7033201 } },
+    "weight": 22000
+  },
+  {
+    "name": "One Million Masks NYC < China // Masks //April 2020",
+    "shipper": "Flexport",
+    "contents": "95 cartons of KN95 masks",
+    "date": "2020-04-15T00:00:00.000Z",
+    "origin": { "position": { "lat": 31.152387, "lng": 121.801508 } },
+    "destination": { "position": { "lat": 40.1823429, "lng": -74.8009904 } },
+    "weight": 671
+  },
+  {
+    "name": "Calais < UK // May 2020: FTL // Part #03",
+    "shipper": "Flexport",
+    "contents": "11 pallets of sleeping bags/blankets and 12 pallets of food",
+    "date": "2020-05-08T00:00:00.000Z",
+    "origin": { "position": { "lat": 51.279773, "lng": 1.078758 } },
+    "destination": { "position": { "lat": 50.95287, "lng": 1.852179 } },
+    "weight": 17638
+  },
+  {
+    "name": "Moria < Frankfurt // Masks // June 2020",
+    "shipper": "Flexport",
+    "contents": "31 cartons of non-medical face masks, face shields, and disinfectants.",
+    "date": "2020-06-29T00:00:00.000Z",
+    "origin": { "position": { "lat": 50.110245, "lng": 8.68217 } },
+    "destination": { "position": { "lat": 39.1327741, "lng": 26.515294 } },
+    "weight": 260
+  }
+]
