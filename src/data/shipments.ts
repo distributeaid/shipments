@@ -56,37 +56,50 @@ export const fetchShipments = (
 				.then((res) => {
 					const table = res.split('\n')
 					const keys = table[1].split('\t').map((s) => s.trim())
-					return table
-						.splice(2)
-						.map((s) => {
-							const values = s.split('\t').map((s) => s.trim())
-							return keys.reduce(
-								(shipment, k, i) => ({
-									...shipment,
-									[k]: values[i],
-								}),
-								{} as ShipmentSpreadsheetData,
+					return (
+						table
+							.splice(2)
+							.map((s) => {
+								const values = s.split('\t').map((s) => s.trim())
+								return keys.reduce(
+									(shipment, k, i) => ({
+										...shipment,
+										[k]: values[i],
+									}),
+									{} as ShipmentSpreadsheetData,
+								)
+							})
+							// check if all values are set
+							.filter(
+								(values: any) =>
+									!keys.reduce(
+										(hasBlank, key) =>
+											hasBlank ||
+											values[key] === undefined ||
+											values[key] === null,
+										false,
+									),
 							)
-						})
-						.map((s) => ({
-							name: s.name,
-							shipper: s.shipper,
-							contents: s.contents,
-							date: new Date(`${s.date}T00:00:00Z`),
-							origin: {
-								position: {
-									lat: parseFloat(s.originLat),
-									lng: parseFloat(s.originLng),
+							.map((s) => ({
+								name: s.name,
+								shipper: s.shipper,
+								contents: s.contents,
+								date: new Date(`${s.date}T00:00:00Z`),
+								origin: {
+									position: {
+										lat: parseFloat(s.originLat),
+										lng: parseFloat(s.originLng),
+									},
 								},
-							},
-							destination: {
-								position: {
-									lat: parseFloat(s.destinationLat),
-									lng: parseFloat(s.destinationLng),
+								destination: {
+									position: {
+										lat: parseFloat(s.destinationLat),
+										lng: parseFloat(s.destinationLng),
+									},
 								},
-							},
-							weight: parseInt(s.weight, 10),
-						}))
+								weight: parseInt(s.weight, 10),
+							}))
+					)
 				}),
 		(error) => ({
 			type: ErrorType.InternalError,
