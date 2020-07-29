@@ -43,7 +43,24 @@ describe('fetchShipments', () => {
 	it('should ignore invalid entries', async () => {
 		const scope = nock('https://example.com')
 			.get('/shipments-with-invalid.tsv')
-			.reply(200, [shipmentsTSV, ['Missing Data'].join('\t')].join('\n'))
+			.reply(
+				200,
+				[
+					shipmentsTSV,
+					['Missing Data'].join('\t'),
+					[
+						'This',
+						'has',
+						'all',
+						'fields',
+						'filled',
+						'but',
+						'with',
+						'bogus',
+						'data',
+					].join('\t'),
+				].join('\n'),
+			)
 		await pipe(
 			fetchShipments(
 				'https://example.com/shipments-with-invalid.tsv',

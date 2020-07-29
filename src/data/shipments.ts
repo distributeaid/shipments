@@ -55,7 +55,10 @@ export const fetchShipments = (
 				.then(async (res) => res.text())
 				.then((res) => {
 					const table = res.split('\n')
-					const keys = table[1].split('\t').map((s) => s.trim())
+					const keys = table[1]
+						.split('\t')
+						.map((s) => s.trim())
+						.filter((s) => s.length > 0)
 					return (
 						table
 							.splice(2)
@@ -76,7 +79,8 @@ export const fetchShipments = (
 										(hasBlank, key) =>
 											hasBlank ||
 											values[key] === undefined ||
-											values[key] === null,
+											values[key] === null ||
+											values[key].length === 0,
 										false,
 									),
 							)
@@ -99,6 +103,16 @@ export const fetchShipments = (
 								},
 								weight: parseInt(s.weight, 10),
 							}))
+							// Check if values have been parsed correctly
+							// Note: if values get more complext, consider using JSON schema
+							.filter(
+								(s) =>
+									!isNaN(s.origin.position.lat) &&
+									!isNaN(s.origin.position.lng) &&
+									!isNaN(s.destination.position.lat) &&
+									!isNaN(s.destination.position.lng) &&
+									!isNaN(s.weight),
+							)
 					)
 				}),
 		(error) => ({
