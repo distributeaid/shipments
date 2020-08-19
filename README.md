@@ -1,6 +1,7 @@
 # Shipments
 
 ![Build and Release](https://github.com/distributeaid/shipments/workflows/Build%20and%20Release/badge.svg?branch=saga)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d6a86ae4-7b3b-4faf-ad33-3f359df6a071/deploy-status)](https://app.netlify.com/sites/shipment-tracker/deploys)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Mergify Status](https://img.shields.io/endpoint.svg?url=https://dashboard.mergify.io/badges/distributeaid/shipments&style=flat)](https://mergify.io)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
