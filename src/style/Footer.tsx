@@ -43,6 +43,7 @@ const Copyright = styled(Section)`
 `
 
 const Nav = styled.nav`
+	margin-bottom: 2rem;
 	a {
 		margin: 0 0.5rem;
 	}
@@ -104,6 +105,19 @@ export const Footer = ({ shipmentsURL }: { shipmentsURL: string }) => (
 					<InstagramIcon />
 				</a>
 			</Nav>
+			<p>
+				{/* We need to credit Netlify to be eligible for the open-source plan: https://www.netlify.com/legal/open-source-policy/ */}
+				<a
+					href="https://www.netlify.com"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					<img
+						alt="Deploys by Netlify"
+						src="https://www.netlify.com/img/global/badges/netlify-dark.svg"
+					/>
+				</a>
+			</p>
 			<p>
 				&copy; 2020{' '}
 				<a
