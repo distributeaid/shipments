@@ -43,7 +43,7 @@
     "husky": "4.2.5",
     "jest": "26.1.0",
     "localforage": "1.7.4",
-    "nock": "13.0.3",
+    "nock": "13.0.4",
     "semantic-release": "17.1.1",
     "source-map-loader": "1.0.1",
     "ts-jest": "26.1.2",
