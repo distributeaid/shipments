@@ -42,7 +42,7 @@
     "handlebars": "4.7.6",
     "husky": "4.2.5",
     "jest": "26.1.0",
-    "localforage": "1.7.4",
+    "localforage": "1.9.0",
     "nock": "13.0.3",
     "semantic-release": "17.1.1",
     "source-map-loader": "1.0.1",
