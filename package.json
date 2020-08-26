@@ -37,7 +37,7 @@
     "@types/react-leaflet": "2.5.2",
     "@types/styled-components": "5.1.1",
     "check-node-version": "4.0.3",
-    "eslint-plugin-react": "7.20.3",
+    "eslint-plugin-react": "7.20.6",
     "fetch-ponyfill": "6.1.1",
     "handlebars": "4.7.6",
     "husky": "4.2.5",
